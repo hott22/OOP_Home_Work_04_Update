@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class TaskFactory {
     private static int id;
+
     static {
         TaskFactory.id = 0;
     }
@@ -20,7 +21,8 @@ public class TaskFactory {
     /**
      * Добавляет задачу
      */
-    public void addTask(ConsoleView view, TaskList taskList){
+    public TaskList addTask(ConsoleView view, TaskList taskList){
+        //System.out.println(taskList);
         String name = view.getString("Enter a name: ");
         int numberPriority = view.getValueChoice("Enter priority:\n1 - low priority\n2 - medium priority\n3 - high priority\nChoice: ",3);
         String priority = view.getChoicePriority(numberPriority);
@@ -33,5 +35,8 @@ public class TaskFactory {
         //writer.writeTask(nameTask);
         taskList.add(nameTask);
         System.out.println(taskList);
+        return  taskList;
     }
+
+
 }

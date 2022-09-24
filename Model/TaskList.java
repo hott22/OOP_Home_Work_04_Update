@@ -7,9 +7,11 @@ public class TaskList {
     List<Task> tasks;
     public TaskList(){
         tasks = new ArrayList<>();
+
     }
 
     public List<Task> getTasks() {
+
         return tasks;
     }
 
@@ -26,4 +28,15 @@ public class TaskList {
         }
         return a;
     }
+
+    public int size() {
+       return tasks.size();
+    }
+
+
+    public Task get(int index){
+        return tasks.get(index);
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package home4.update.File;
 
 import home4.update.Model.Task;
+import home4.update.Model.TaskList;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,11 +12,13 @@ public class Writer {
     FileWriter writ;
 
     public Writer() throws IOException {
-        writ = new FileWriter(path, true);
+        writ = new FileWriter(path, false);
     }
 
-    public void writeTask(Task task) throws IOException {
-        writ.write(task.toString() + "\n");
-        writ.flush();
+    public void writeAllTask(TaskList taskList) throws IOException {
+        for (int i = 0; i < taskList.size(); i++) {
+            writ.write(taskList.get(i).toString() + "\n");
+        }
+        writ.close();
     }
 }
