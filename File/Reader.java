@@ -8,36 +8,13 @@ import java.io.*;
 import static home4.update.File.Config.*;
 
 public class Reader {
-
-    //FileReader reader;
-    //BufferedReader bufferedReader;
-
-/*    public Reader() throws FileNotFoundException {
-        //reader = new FileReader(path);
-        //bufferedReader = new BufferedReader(reader);
-    }*/
-
-/*
-    public TaskList readFile() throws IOException {
-        TaskList taskList = new TaskList();
-        String line = bufferedReader.readLine();
-        while (line != null) {
-            taskList.add(taskFromLine(line));
-            line = bufferedReader.readLine();
-        }
-        return taskList;
-    }
-*/
     public TaskList readFile() {
         TaskList taskList = new TaskList();
         try {
-            //taskList = new TaskList();
-            File file = new File(path);
-            FileReader fe = new FileReader(file);
-            BufferedReader reader = new BufferedReader(fe);
+            BufferedReader reader = new BufferedReader(new FileReader(path));
             String line = reader.readLine();
             while (line != null) {
-                System.out.println(line);
+                //System.out.println(line);
                 taskList.add(taskFromLine(line));
 
                 // считываем остальные строки в цикле
@@ -46,7 +23,6 @@ public class Reader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return taskList;
     }
 

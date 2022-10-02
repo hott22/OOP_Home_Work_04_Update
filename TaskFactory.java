@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class TaskFactory {
+    ConsoleView view;
     private static int id;
 
     static {
@@ -21,12 +22,12 @@ public class TaskFactory {
     /**
      * Добавляет задачу
      */
-    public TaskList addTask(ConsoleView view, TaskList taskList){
+    public TaskList addTask(TaskList taskList){
         //System.out.println(taskList);
+        view = new ConsoleView();
         String name = view.getString("Enter a name: ");
-        int numberPriority = view.getValueChoice("Enter priority:\n1 - low priority\n2 - medium priority\n3 - high priority\nChoice: ",3);
-        String priority = view.getChoicePriority(numberPriority);
-        String date1 = view.getString(""); // ??????????????
+        String priority = view.getChoicePriority();
+        //String date1 = view.getString(""); // ??????????????
         String date = view.getString("Enter date: ");
         String owner = view.getString("Enter owner: ");
         String deadline = view.getString("Enter deadline: ");
@@ -34,7 +35,7 @@ public class TaskFactory {
         Task nameTask = new Task(name, id, priority, date, owner, deadline);
         //writer.writeTask(nameTask);
         taskList.add(nameTask);
-        System.out.println(taskList);
+        //System.out.println(taskList);
         return  taskList;
     }
 

@@ -20,11 +20,14 @@ public class ConsoleView implements View {
         while(number > choice || number < 1){
             System.out.printf("Enter no less than 1 and no more than %d\n", choice);
             number = scanner.nextInt();
+            //scanner.close();
         }
+        //scanner.close();
         return number;
     }
 
-    public String getChoicePriority(int value){
+    public String getChoicePriority(){
+        int value = getValueChoice("Enter priority:\n1 - low priority\n2 - medium priority\n3 - high priority\nChoice: ",3);
         String priority = "";
               switch (value) {
             case 1 -> priority = "low";
