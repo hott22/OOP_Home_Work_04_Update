@@ -2,11 +2,13 @@ package home4.update;
 
 import home4.update.File.Reader;
 import home4.update.File.Writer;
+import home4.update.Model.DelTask;
+import home4.update.Model.TaskFactory;
 import home4.update.Model.TaskList;
+import home4.update.Model.UpdateTask;
 import home4.update.View.ConsoleView;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Presenter {
 
@@ -18,7 +20,6 @@ public class Presenter {
         TaskList taskList;
         taskList = reader.readFile();
 
-        //System.out.println(taskList);
         while (true){
             int choice = view.getValueChoice("""
                     -----------
@@ -37,9 +38,23 @@ public class Presenter {
                 taskList = taskFactory.addTask(taskList);
 
             }
+            if(choice == 3){
+                DelTask delTask = new DelTask();
+                taskList = delTask.deleteTask(taskList);
+            }
+            if(choice == 4){
+                UpdateTask updateTask = new UpdateTask();
+                int choice1 = view.getValueChoice("1 - Update status\n2 - Update priority\nChoise: ",2);
+                if(choice1 == 1){
+                    taskList = updateTask.updTaskStatus(taskList);
+                }
+                else {
+                    taskList = updateTask.updTaskPriority(taskList);
+                }
+            }
+
             if(choice == 5){
                 Writer writer = new Writer();
-                //System.out.println(taskList);
                 writer.writeAllTask(taskList);
             }
             if(choice == 6){

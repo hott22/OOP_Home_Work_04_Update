@@ -10,10 +10,6 @@ public class TaskList {
 
     }
 
-    public List<Task> getTasks() {
-
-        return tasks;
-    }
 
     public void add(Task o) {
         tasks.add(o);
@@ -22,9 +18,14 @@ public class TaskList {
     @Override
     public String toString() {
         String a = "";
-        for (Task task :
-                tasks) {
-            a = a + "\n" + task.toString() + "\n";
+        if(tasks.isEmpty()){
+            a = "Tasklist is empty";
+        }
+        else{
+            for (Task task :
+                    tasks) {
+                a = a + "\n" + task.toString() + "\n";
+            }
         }
         return a;
     }
@@ -37,6 +38,5 @@ public class TaskList {
     public Task get(int index){
         return tasks.get(index);
     }
-
 
 }

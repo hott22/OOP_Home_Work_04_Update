@@ -38,6 +38,9 @@ public class Task {
         return name;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public String toString(){
         return String.format("name : %s, id : %d, priority : %s, date : %s, owner : %s, " +

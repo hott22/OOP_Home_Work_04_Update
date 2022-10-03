@@ -37,7 +37,5 @@ public class Reader {
             task.setStatus(Boolean.parseBoolean(splitedLine[13]));
             return task;
         }
-
-
-    }
+}
 
